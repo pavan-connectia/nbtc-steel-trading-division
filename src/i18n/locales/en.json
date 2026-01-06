@@ -1,0 +1,177 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": {
+      "title": "About",
+      "submenu": {
+        "corporateProfile": "Corporate Profile",
+        "chairmanMsg": "Chairman's Message",
+        "mdMsg": "MD's Message",
+        "executiveManagement": "Executive Management",
+        "qualifications": "Qualifications",
+        "subsidiaries": "Subsidiaries"
+      }
+    },
+    "productsServices": {
+      "title": "Products & Services"
+    },
+    "qhse": {
+      "title": "QHSE",
+      "submenu": {
+        "quality": "Quality",
+        "hse": "HSE",
+        "recognitions": "Recognitions"
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "submenu": {
+        "engineering": "Engineering",
+        "mep": "MEP",
+        "manufacturing": "Manufacturing",
+        "inspectionService": "Inspection Service",
+        "readyMixSupply": "Ready Mix Supply"
+      }
+    },
+    "news": {
+      "title": "News",
+      "submenu": {
+        "newsEvents": "News & Events",
+        "publications": "Publications",
+        "presentation": "Presentation",
+        "csr": "Corporate Social Responsibility",
+        "photoGallery": "Photo Gallery",
+        "videoGallery": "Video Gallery",
+        "publication": "Publication"
+      }
+    },
+    "supportServices": {
+      "title": "Support Services",
+      "submenu": {
+        "adminHR": "Admin & Human Resources",
+        "financeAccounts": "Finance & Accounts",
+        "materialManagement": "Procurement & Material Management",
+        "informationTechnology": "Business Information Systems & Technology"
+      }
+    },
+    "branches": {
+      "title": "Branches",
+      "submenu": {}
+    },
+    "careers": "Careers",
+    "contact_us": "Contact Us"
+  },
+  "footer": {
+    "building_your_trust": "building your trust.",
+    "all_rights": "© 2026 NBTC. DSG All rights reserved.",
+    "quick_links": "Quick Links",
+    "company_address": "Company Address",
+    "corporate_office_address": "Corporate Office Address",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "home": {
+    "learn_more": "Learn More",
+    "journey": "Journey",
+    "mission": "Mission",
+    "value": "Values",
+    "vision": "Vision",
+    "our_services": "Our Services",
+    "free_quote": "Have any upcoming project? Get a free quote",
+    "get_a_quote": "Get a quote",
+    "not_sure_which_sol": "Not sure which solution fits your business needs?",
+    "our_works": "Our Works",
+    "our_projects": "Our Projects",
+    "featured": "Featured Projects",
+    "ongoing": "Ongoing Projects",
+    "all": "All Projects",
+    "view_all_projects": "View all projects",
+    "our_clients": "Our Clients",
+    "testimonials": "Testimonials",
+    "our_clients_say": "Our Clients Say",
+    "our_milestones": "Our Milestones",
+    "our_recognition": "Our RECOGNITIONS",
+    "certifications_recognitions": "Certifications & Recognitions",
+    "quality": "Quality",
+    "hse": "HSE",
+    "recognitions": "Recognitions",
+    "accredetions": "Accreditations",
+    "view_all_certifications": "View all certifications",
+    "our_associates_affiliates": "Our Associates & Affiliates",
+    "join_the_team": "Join the Team.",
+    "explore_exciting_career_opportunities": "Explore exciting career opportunities.",
+    "explore_careers": "Explore Careers",
+    "employee_login_payroll_benefits": "Employee login for payroll, benefits, & more.",
+    "login_to_employee_portal": "Login to the Employee Portal",
+    "employee_login": "Employee Login",
+    "featured_news": "Featured News",
+    "view_more": "View more",
+    "brands": "Brands"
+  },
+  "about": {
+    "about_us": "About Us",
+    "our_corporate_profile": "Our Corporate Profile",
+    "visionMissionValues": "Vision Mission Values",
+    "about_division": "About Division",
+    "our_executive_management": "Visionary Leaders",
+    "our_qualification": "Our Qualification",
+    "associates_and_affiliates": "Associates & Affiliates"
+  },
+  "coreBusiness": {
+    "find_you_the_right_equipment": "Find you the right product",
+    "our_featured_equipments": "Our Featured Products",
+    "how_it_works": "How It Works",
+    "discuss_project_needs": "Discuss Your Project Needs",
+    "discuss_project_needs_desc": "Describe your project and the equipment you require. Our team will work closely with you to understand your specific requirements.",
+    "free_quote_agreement": "Get a Free Quote & Agreement",
+    "free_quote_agreement_desc": "Receive a personalized quote based on your needs and project timeline. We offer competitive rates and flexible leasing options.",
+    "delivery_support": "Equipment Delivery & Support",
+    "delivery_support_desc": "We handle all logistics, ensuring your equipment arrives on-site, ready to work. Optional on-site support and maintenance are available.",
+    "best_selling": "Best Selling",
+    "most_popular_equipments": "Most Popular Equipments",
+    "view_all_equipments": "View all equipments",
+    "explore_more": "Explore more",
+    "view_all_specifications": "View all specifications",
+    "request_quote": "Request a Quote",
+    "overview": "Overview",
+    "specifications": "Specifications",
+    "service_support": "Service and Support",
+    "reviews": "Reviews",
+    "photos": "Photos",
+    "browse_more_equipments": "Browse more equipments",
+    "related_equipments": "Related Equipments",
+    "gallery": "Gallery",
+    "download_pdf": "Download Pdf"
+  },
+  "qhse": {
+    "our_quality": "Our Quality",
+    "our_certificates": "Our Certificates",
+    "our_hse": "Our Hse",
+    "hse_objective": "Hse Objective",
+    "hse_mission": "Hse Mission",
+    "our_recognitions": "Our Recognitions"
+  },
+  "news": {
+    "readmore": "Readmore"
+  },
+  "careers": {
+    "important_notice": "Important Notice",
+    "view_important_notice": "View important notice",
+    "current_opening": "Current opening",
+    "choose_an_opening": "Choose an opening",
+    "basic_details": "Basic details",
+    "vacancy": "Vacancy",
+    "location": "Location",
+    "description": "Description"
+  },
+  "contact": {
+    "contact_address": "Contact Address",
+    "contact_form": "Contact Form",
+    "physical_address": "Physical Address",
+    "postal_address": "Postal Address",
+    "phone": "Phone",
+    "fax": "Fax",
+    "email": "Email",
+    "website": "Website"
+  }
+}

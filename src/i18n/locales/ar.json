@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "about": {
+      "title": "عن الشركة",
+      "submenu": {
+        "corporateProfile": "الملف الشخصي للشركة",
+        "chairmanMsg": "رسالة رئيس مجلس الإدارة",
+        "mdMsg": "رسالة المدير العام",
+        "executiveManagement": "الإدارة التنفيذية",
+        "qualifications": "المؤهلات",
+        "subsidiaries": "الشركات التابعة"
+      }
+    },
+    "productsServices": {
+      "title": "المنتجات والخدمات"
+    },
+    "qhse": {
+      "title": "الجودة والسلامة",
+      "submenu": {
+        "quality": "الجودة",
+        "hse": "السلامة والصحة المهنية",
+        "recognitions": "الاعترافات"
+      }
+    },
+    "projects": {
+      "title": "المشاريع",
+      "submenu": {
+        "engineering": "الهندسة",
+        "mep": "الميكانيكا والكهرباء والسباكة",
+        "manufacturing": "التصنيع",
+        "inspectionService": "خدمة التفتيش",
+        "readyMixSupply": "إمدادات الخرسانة الجاهزة"
+      }
+    },
+    "news": {
+      "title": "الأخبار",
+      "submenu": {
+        "newsEvents": "الأخبار والفعاليات",
+        "publications": "المنشورات",
+        "presentation": "العروض التقديمية",
+        "csr": "المسؤولية الاجتماعية",
+        "photoGallery": "معرض الصور",
+        "videoGallery": "معرض الفيديو"
+      }
+    },
+    "supportServices": {
+      "title": "الخدمات المساندة",
+      "submenu": {
+        "adminHR": "الإدارة والموارد البشرية",
+        "financeAccounts": "المالية والحسابات",
+        "materialManagement": "إدارة المواد",
+        "informationTechnology": "نظم المعلومات والتكنولوجيا"
+      }
+    },
+    "branches": {
+      "title": "الفروع",
+      "submenu": {}
+    },
+    "careers": "الوظائف",
+    "contact_us": "اتصل بنا"
+  },
+  "footer": {
+    "building_your_trust": "بناء ثقتك.",
+    "all_rights": "© 2024 إن بي تي سي. DSG جميع الحقوق محفوظة.",
+    "quick_links": "روابط سريعة",
+    "company_address": "عنوان الشركة",
+    "corporate_office_address": "عنوان المكتب الرئيسي",
+    "head_office_phones": "هواتف المكتب الرئيسي",
+    "phone": "هواتف الشركة",
+    "email": "بريد الشركة"
+  },
+  "home": {
+    "learn_more": "تعرف على المزيد",
+    "journey": "رحلة",
+    "mission": "مهمة",
+    "value": "قيمة",
+    "vision": "رؤية",
+    "our_services": "خدماتنا",
+    "free_quote": "هل لديك أي مشروع قادم؟ احصل على عرض أسعار مجاني",
+    "get_a_quote": "احصل على عرض أسعار",
+    "not_sure_which_sol": "لست متأكدا من الحل الذي يناسب احتياجات عملك؟",
+    "our_works": "أعمالنا",
+    "our_projects": "مشاريعنا الخاصة",
+    "featured": "مشاريع مميزة",
+    "ongoing": "المشاريع الجارية",
+    "all": "جميع المشاريع",
+    "view_all_projects": "View all projects",
+    "our_clients": "عملاؤنا المتميزون",
+    "testimonials": "شهادات",
+    "our_clients_say": "ماذا يقول عملاؤنا",
+    "our_milestones": "معالمنا",
+    "our_recognition": "اعترافاتنا",
+    "certifications_recognitions": "الشهادات والاعتراف",
+    "quality": "جودة",
+    "hse": "الصحة والسلامة والبيئة",
+    "recognitions": "الجوائز والتكريمات",
+    "accredetions": "الاعتمادات",
+    "view_all_certifications": "عرض جميع الشهادات",
+    "our_associates_affiliates": "شركاؤنا والشركات التابعة لنا",
+    "join_the_team": "انضم إلى الفريق",
+    "explore_exciting_career_opportunities": "استكشف فرص عمل مثيرة",
+    "explore_careers": "استكشاف الوظائف",
+    "employee_login_payroll_benefits": "تسجيل دخول الموظف لرواتب، المزايا، والمزيد",
+    "login_to_employee_portal": "تسجيل الدخول إلى بوابة الموظفين",
+    "employee_login": "تسجيل دخول الموظف",
+    "featured_news": "الأخبار المميزة",
+    "view_more": "عرض المزيد",
+    "brands": "العلامات التجارية"
+  },
+  "about": {
+    "about_us": "من نحن",
+    "our_corporate_profile": "ملفنا المؤسسي",
+    "visionMissionValues": "الرؤية الرسالة القيم",
+    "about_division": "حول القسم",
+    "our_executive_management": "إدارتنا التنفيذية",
+    "our_qualification": "مؤهلاتنا",
+    "associates_and_affiliates": "الشركاء والشركات التابعة"
+  },
+  "coreBusiness": {
+    "find_you_the_right_equipment": "العثور على المعدات المناسبة لك",
+    "our_featured_equipments": "معداتنا المميزة",
+    "how_it_works": "كيف تعمل",
+    "discuss_project_needs": "ناقش احتياجات مشروعك",
+    "discuss_project_needs_desc": "صف مشروعك والمعدات التي تحتاجها. سيعمل فريقنا معك لفهم متطلباتك المحددة.",
+    "free_quote_agreement": "احصل على عرض سعر مجاني واتفاقية",
+    "free_quote_agreement_desc": "احصل على عرض سعر مخصص بناءً على احتياجاتك وجدولك الزمني. نقدم أسعاراً تنافسية وخيارات تأجير مرنة.",
+    "delivery_support": "توصيل المعدات والدعم",
+    "delivery_support_desc": "نحن نتولى جميع الخدمات اللوجستية، ونتأكد من وصول معداتك إلى الموقع جاهزة للعمل. يتوفر دعم وصيانة في الموقع كخيار إضافي.",
+    "best_selling": "الأكثر مبيعًا",
+    "most_popular_equipments": "المعدات الأكثر شيوعًا",
+    "view_all_equipments": "عرض جميع المعدات",
+    "explore_more": "اكتشف المزيد",
+    "view_all_specifications": "عرض جميع المواصفات",
+    "request_quote": "طلب عرض سعر",
+    "overview": "نظرة عامة",
+    "specifications": "المواصفات",
+    "service_support": "الخدمة والدعم",
+    "reviews": "التقييمات",
+    "photos": "الصور",
+    "browse_more_equipments": "تصفح المزيد من المعدات",
+    "related_equipments": "المعدات ذات الصلة",
+    "gallery": "معرض"
+  },
+  "qhse": {
+    "our_quality": "جودتنا",
+    "our_certificates": "شهاداتنا",
+    "our_hse": "الصحة والسلامة والبيئة لدينا",
+    "hse_objective": "هدف الصحة والسلامة والبيئة",
+    "hse_mission": "مهمة الصحة والسلامة والبيئة",
+    "our_recognitions": "اعترافاتنا"
+  },
+  "news": {
+    "readmore": "اقرأ المزيد"
+  },
+  "careers": {
+    "important_notice": "إشعار مهم",
+    "view_important_notice": "عرض إشعار مهم",
+    "current_opening": "الوظائف المتاحة حاليا",
+    "choose_an_opening": "اختر وظيفة متاحة",
+    "basic_details": "التفاصيل الأساسية",
+    "vacancy": "الوظيفة الشاغرة",
+    "location": "الموقع",
+    "description": "الوصف"
+  },
+  "contact": {
+    "contact_address": "عنوان الاتصال",
+    "contact_form": "نموذج الاتصال",
+    "physical_address": "العنوان الفعلي",
+    "postal_address": "العنوان البريدي",
+    "phone": "الهاتف",
+    "fax": "الفاكس",
+    "email": "البريد الإلكتروني",
+    "website": "الموقع الإلكتروني"
+  }
+}

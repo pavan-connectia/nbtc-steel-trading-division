@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply m-0 box-border p-0;
+}
+
+.font-kanit {
+  font-family: "Kanit", sans-serif;
+}
+
+.font-lato {
+  font-family: "Lato", sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.blueHeading {
+  @apply font-kanit text-center text-2xl font-medium text-blue sm:text-3xl md:text-4xl lg:text-[2.5rem];
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+
+.slick-list {
+  margin: 0 -10px;
+}
+
+.custom-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-dots li {
+  margin: 0 5px;
+}
+
+.custom-dots li button:before {
+  font-size: 10px;
+  color: blue;
+}
+
+.slick-dots li.slick-active div {
+  background: red !important;
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 13px !important;
+}
