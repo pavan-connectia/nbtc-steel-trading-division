@@ -14,7 +14,7 @@ const Projects = () => {
   const options = [
     { key: "kuwait", label: `kuwait` },
     { key: "ksa", label: `ksa` },
-    { key: "auh", label: `auh` },
+    { key: "auh", label: `uae` },
   ];
 
   const [selectedOption, setSelectedOption] = useState("kuwait");

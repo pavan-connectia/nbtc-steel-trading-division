@@ -5,9 +5,12 @@ import { HyperLink, Img, Paragraph } from "../";
 import { LuArrowRight } from "react-icons/lu";
 import { MdLockOutline } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import { useGetLoginURLByDeptIdQuery } from "@/redux/api/LoginURLApi";
 
 const EmployeeLinks = () => {
   const { t } = useTranslation();
+  const { data } = useGetLoginURLByDeptIdQuery();
+  const url = data?.data?.departmentLoginUrl;
 
   return (
     <div className="flex h-[28rem] w-full overflow-hidden">
@@ -36,7 +39,9 @@ const EmployeeLinks = () => {
             <HyperLink
               children={t("home.explore_careers")}
               icon={<LuArrowRight className="rtl:rotate-180" />}
-              href="/careers"
+              href="https://nbtcgroup.com/careers"
+              target="_blank"
+              rel="noopener noreferrer"
               variant={"filled"}
               className={"my-auto h-fit bg-blue rtl:flex-row-reverse"}
             />
@@ -52,7 +57,9 @@ const EmployeeLinks = () => {
               children={t("home.employee_login")}
               icon={<MdLockOutline />}
               variant={"filled"}
-              href="/employee-login"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
               className={"my-auto h-fit rtl:flex-row-reverse"}
             />
           </div>

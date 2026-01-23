@@ -130,7 +130,7 @@ export default function GlobeComponent({
         />
       </div> */}
 
-      <div className="relative inline-block w-[350px] sm:w-[550px] md:w-[750px] overflow-hidden">
+      <div className="relative inline-block w-[335px] sm:w-[550px] md:w-[588px] overflow-hidden">
         <Img
           src="/globalmap.jpeg"
           className="
@@ -145,7 +145,7 @@ export default function GlobeComponent({
 
 
       {selectedLocation && (
-        <div className="absolute left-5 top-10 flex max-w-[320px] justify-between gap-5 rounded border bg-white p-4 shadow-lg">
+        <div className="absolute left-5 top-10 flex max-w-[320px] justify-between gap-5 rounded border  p-4 shadow-lg">
           <div>
             <Heading
               children={selectedLocation.location}

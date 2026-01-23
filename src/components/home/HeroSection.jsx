@@ -67,7 +67,7 @@ export default function HeroSection() {
       )}
 
       <div
-        className="scrollbar-hide absolute top-[40rem] z-40 mx-auto flex w-full max-w-[1280px] justify-between gap-5 overflow-x-auto px-10"
+        className="scrollbar-hide absolute top-[40rem] z-40 mx-auto flex w-full max-w-[1280px] justify-between gap-5 overflow-x-auto px-3 md:px-10"
         id="learnmore"
       >
         <HomeStatistics />
