@@ -3,10 +3,12 @@ import qualification from "@/assets/hero/qualification.webp";
 import { MaxContainer, Hero, Head, SetInnerHtml } from "@/components";
 import { useGetQualificationQuery } from "@/redux/api/qualificationApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const Qualifications = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetQualificationQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
 
@@ -24,7 +26,7 @@ const Qualifications = () => {
       />
 
       <Hero
-        src={qualification}
+        src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.qualification?.image}`}
         heading={t("nav.about.submenu.qualifications")}
       />
 

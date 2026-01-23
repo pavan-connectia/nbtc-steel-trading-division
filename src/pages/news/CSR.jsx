@@ -11,11 +11,13 @@ import {
 } from "@/components";
 import { useGetCsrQuery } from "@/redux/api/newsApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const CSR = () => {
   const { i18n } = useTranslation();
   const { data } = useGetCsrQuery();
   const currentLang = i18n.language === "ar" ? "ar" : "en";
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   return (
     <>
@@ -27,7 +29,7 @@ const CSR = () => {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={message} heading={"CORPORATE SOCIAL RESPONSIBILITY"} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.csr?.image}`} heading={"CORPORATE SOCIAL RESPONSIBILITY"} />
       <MaxContainer className="max-w-[1200px] px-5 py-10 md:gap-8 md:py-16">
         <div className="flex flex-wrap justify-center gap-5 py-10 md:gap-8">
           {data?.data?.map((d) => (

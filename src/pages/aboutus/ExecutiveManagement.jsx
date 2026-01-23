@@ -3,10 +3,12 @@ import message from "@/assets/hero/message.webp";
 import { Heading, Img, MaxContainer, Hero, Head } from "@/components";
 import { useGetAboutusByDeptIdQuery } from "@/redux/api/aboutusApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const ExecutiveManagement = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetAboutusByDeptIdQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
   const aboutusData = data?.data || {};
@@ -22,7 +24,7 @@ const ExecutiveManagement = () => {
         keywords={data?.data?.seo?.metaKeywords}
       />
       <Hero
-        src={message}
+        src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.executiveManagement?.image}`}
         heading={t("nav.about.submenu.executiveManagement")}
       />
 

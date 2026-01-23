@@ -11,10 +11,12 @@ import {
 } from "@/components";
 import { useTranslation } from "react-i18next";
 import { useGetHomeByDeptIdQuery } from "@/redux/api/homeApi";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 export default function VisionMissionValues() {
   const { t, i18n } = useTranslation();
   const { data } = useGetHomeByDeptIdQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
   const aboutusData = data?.data || {};
@@ -22,7 +24,7 @@ export default function VisionMissionValues() {
   return (
     <>
       <Head title={"Vision Mission Values | NBTC"} />
-      <Hero src={about} heading={t("about.visionMissionValues")} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.vision?.image}`} heading={t("about.visionMissionValues")} />
 
       <MaxContainer className="max-w-6xl space-y-5 px-5 py-10 md:gap-8 md:py-20">
         <div>

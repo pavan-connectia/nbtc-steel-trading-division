@@ -11,10 +11,12 @@ import {
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { useGetAboutusByDeptIdQuery } from "@/redux/api/aboutusApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const MdMsg = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetAboutusByDeptIdQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
   const mdMsg = data?.data?.mdMsg || {};
@@ -29,7 +31,7 @@ const MdMsg = () => {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={message} heading={t("nav.about.submenu.mdMsg")} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.mdMsg?.image}`} heading={t("nav.about.submenu.mdMsg")} />
 
       <MaxContainer className="px-5 py-6 md:gap-8 md:py-10">
         <div className="justify-cente mx-auto flex max-w-5xl flex-col-reverse gap-10 py-10 sm:py-12 md:py-16 lg:flex-row lg:items-start lg:py-20">

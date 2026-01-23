@@ -11,10 +11,12 @@ import {
 } from "@/components";
 import { useGetAboutusByDeptIdQuery } from "@/redux/api/aboutusApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const CorparateProfilePage = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetAboutusByDeptIdQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
   const aboutusData = data?.data || {};
@@ -29,7 +31,7 @@ const CorparateProfilePage = () => {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={about} heading={t("about.about_us")} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.corporateProfile?.image}`} heading={t("about.about_us")} />
 
       <MaxContainer className="px-5 py-10 md:gap-8 md:py-20">
         <Heading variant="big" className="text-left rtl:text-right">

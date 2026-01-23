@@ -11,10 +11,12 @@ import {
 } from "@/components";
 import { useGetAfflicatesQuery } from "@/redux/api/afflicatesApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const Subsidiary = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetAfflicatesQuery();
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
 
@@ -30,7 +32,7 @@ const Subsidiary = () => {
       />
 
       <Hero
-        src={associatesImg}
+        src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.subsidiaries?.image}`}
         heading={t("about.associates_and_affiliates")}
       />
 

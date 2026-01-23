@@ -11,12 +11,14 @@ import {
 import camera from "@/assets/hero/camera.webp";
 import { useTranslation } from "react-i18next";
 import { useGetImgGalleryByDeptIdQuery } from "@/redux/api/newsApi";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const PhotoGallery = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetImgGalleryByDeptIdQuery();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+   const { data:banner, isLoading } = useGetBannerImagesQuery();
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
 
@@ -30,7 +32,7 @@ const PhotoGallery = () => {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={camera} heading={t("nav.news.submenu.photoGallery")} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.gallery?.image}`} heading={t("nav.news.submenu.photoGallery")} />
       <MaxContainer className="px-5 py-10 md:gap-8 md:py-16">
         <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-5">
           {data?.data?.map((d) => (

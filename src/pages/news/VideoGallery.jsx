@@ -3,11 +3,13 @@ import camera from "@/assets/hero/camera.webp";
 import { Heading, MaxContainer, Hero, Head } from "@/components";
 import { useGetVideoGalleryByDeptIdQuery } from "@/redux/api/newsApi";
 import { useTranslation } from "react-i18next";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 export default function VideoGallery() {
   const { t, i18n } = useTranslation();
   const { data } = useGetVideoGalleryByDeptIdQuery();
   const currentLang = i18n.language === "ar" ? "ar" : "en";
+  const { data: banner, isLoading } = useGetBannerImagesQuery();
 
   return (
     <>
@@ -19,7 +21,7 @@ export default function VideoGallery() {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={camera} heading={t("nav.news.submenu.videoGallery")} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.video?.image}`} heading={t("nav.news.submenu.videoGallery")} />
       <MaxContainer className="px-5 py-10 md:gap-8 md:py-16">
         <div className="flex flex-wrap justify-center gap-5 py-10 md:gap-8">
           {data?.data?.map((d) => (

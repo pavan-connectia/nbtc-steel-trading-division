@@ -31,6 +31,7 @@ import { qhseApi } from "./api/qhseApi";
 import { qualificationApi } from "./api/qualificationApi";
 import { quotationApi } from "./api/quotationApi";
 import { uploadApi } from "./api/uploadApi";
+import { bannerApi } from "./api/bannerApi";
 
 const persistConfig = {
   key: "layoutDirection",
@@ -62,6 +63,7 @@ export const store = configureStore({
     [qhseApi.reducerPath]: qhseApi.reducer,
     [quotationApi.reducerPath]: quotationApi.reducer,
     [uploadApi.reducerPath]: uploadApi.reducer,
+    [bannerApi.reducerPath]: bannerApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -85,7 +87,8 @@ export const store = configureStore({
       .concat(projectsApi.middleware)
       .concat(qhseApi.middleware)
       .concat(quotationApi.middleware)
-      .concat(uploadApi.middleware),
+      .concat(uploadApi.middleware)
+      .concat(bannerApi.middleware),
 });
 
 export const persistor = persistStore(store);
