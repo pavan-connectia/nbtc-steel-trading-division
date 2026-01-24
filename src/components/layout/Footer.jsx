@@ -108,30 +108,53 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <div className="flex items-start gap-x-3">
-              <div className="p-1">
-                <LuMapPin className="text-white" size={18} />
-              </div>
+          <div className="space-y-6">
+            {homeData?.companyAddress?.length >= 1 && (
+              <div className="flex items-start gap-x-3">
+                <div className="p-1">
+                  <LuMapPin className="text-white" size={18} />
+                </div>
 
-              <div className="space-y-2">
-                <h4 className="font-kanit text-lg font-medium text-textGray">
-                  {t("footer.corporate_office_address")}
-                </h4>
-                <div className="flex flex-col gap-y-3 text-wrap">
-                  {homeData?.companyAddress?.map((link) => (
-                    <Link
-                      name={link?.name}
-                      to={link?.href}
-                      key={link?._id}
-                      className="font-lato max-w-xs break-words text-sm font-normal text-textGray"
-                    >
-                      {link?.title[currentLang]}
-                    </Link>
-                  ))}
+                <div className="space-y-2">
+                  <h4 className="font-kanit text-lg font-medium text-textGray">
+                    {t("footer.corporate_office_address")}
+                  </h4>
+
+                  <Link
+                    to={homeData.companyAddress[0]?.href}
+                    className="font-lato max-w-xs break-words text-sm font-normal text-textGray"
+                  >
+                    {homeData.companyAddress[0]?.title[currentLang]}
+                  </Link>
                 </div>
               </div>
-            </div>
+            )}
+
+            {homeData?.companyAddress?.length > 1 && (
+              <div className="flex items-start gap-x-3">
+                <div className="p-1">
+                  <LuMapPin className="text-white" size={18} />
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-kanit text-lg font-medium text-textGray">
+                    {t("footer.division_office_address")}
+                  </h4>
+
+                  <div className="flex flex-col gap-y-3">
+                    {homeData.companyAddress.slice(1).map((link) => (
+                      <Link
+                        key={link?._id}
+                        to={link?.href}
+                        className="font-lato max-w-xs break-words text-sm font-normal text-textGray"
+                      >
+                        {link?.title[currentLang]}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="space-y-3">
