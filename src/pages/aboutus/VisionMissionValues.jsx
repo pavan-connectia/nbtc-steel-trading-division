@@ -22,52 +22,63 @@ export default function VisionMissionValues() {
   const aboutusData = data?.data || {};
 
   return (
-    <>
+           <>
       <Head title={"Vision Mission Values | NBTC"} />
-      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.vision?.image}`} heading={t("about.visionMissionValues")} />
 
-      <MaxContainer className="max-w-6xl space-y-5 px-5 py-10 md:gap-8 md:py-20">
-        <div>
+      <Hero
+        src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.vision?.image}`}
+        heading={t("about.visionMissionValues")}
+      />
+
+      <MaxContainer className="max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20">
+
+        <section className="space-y-4 ">
           <Heading
             variant="big"
-            className="text-left capitalize rtl:text-right"
+            className="text-left rtl:text-right text-xl sm:text-2xl lg:text-3xl"
           >
             {t("home.vision")}
           </Heading>
+
           <SetInnerHtml
-            className={"text-blue sm:text-lg"}
+            className="text-blue text-sm sm:text-base ml-4 lg:text-lg leading-relaxed"
             text={aboutusData?.vision?.[currentLang]}
           />
-        </div>
+        </section>
 
-        <div>
+        <section className="mt-10 sm:mt-14 lg:mt-16 space-y-4 ">
           <Heading
             variant="big"
-            className="text-left capitalize rtl:text-right"
+            className="text-left rtl:text-right text-xl sm:text-2xl lg:text-3xl"
           >
             {t("home.mission")}
           </Heading>
+
           <SetInnerHtml
-            className={"text-blue sm:text-lg"}
+            className="text-blue text-sm sm:text-base ml-4 lg:text-lg leading-relaxed"
             text={aboutusData?.mission?.[currentLang]}
           />
-        </div>
+        </section>
 
-        <div>
+        <section className="mt-10 sm:mt-14 lg:mt-16 space-y-4 ">
           <Heading
             variant="big"
-            className="text-left capitalize rtl:text-right"
+            className="text-left rtl:text-right text-xl sm:text-2xl lg:text-3xl"
           >
             {t("home.value")}
           </Heading>
-          <SetInnerHtml
-            className={"px-5 text-blue sm:text-lg"}
-            text={aboutusData?.value?.[currentLang]}
-          />
-        </div>
+
+          <div className="prose-li:list-disc max-w-none">
+            <SetInnerHtml
+              className="text-blue text-sm sm:text-base ml-4 lg:text-lg leading-relaxed"
+              text={aboutusData?.value?.[currentLang]}
+            />
+          </div>
+        </section>
+
       </MaxContainer>
 
-      <div className="py-10">
+      <div className="py-8 sm:py-10 lg:py-14">
         <OurMilestones />
       </div>
     </>

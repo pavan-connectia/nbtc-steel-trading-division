@@ -6,17 +6,13 @@ const StatisticsCard = ({ statistic }) => {
   const currentLang = i18n.language === "ar" ? "ar" : "en";
 
   const [animatedNumber, setAnimatedNumber] = useState(0);
-  const duration = 4000;
+  const duration = 3000;
 
   const rawValue = statistic?.number || "";
-
   const numberMatch = rawValue.match(/\d+(\.\d+)?/);
-
   const suffix = rawValue.replace(numberMatch ? numberMatch[0] : "", "");
-
   const totalNumber = numberMatch ? parseFloat(numberMatch[0]) : 0;
-
-   const decimalPlaces = numberMatch?.[0]?.includes(".") ? 1 : 0;
+  const decimalPlaces = numberMatch?.[0]?.includes(".") ? 1 : 0;
 
   const numberFormatter = new Intl.NumberFormat(
     currentLang === "ar" ? "ar-EG" : "en-US",
@@ -38,16 +34,12 @@ const StatisticsCard = ({ statistic }) => {
     const animateNumber = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
-
       const progress = Math.min(elapsed / duration, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
-
-      const decimalPlaces = numberMatch?.[0]?.includes(".") ? 1 : 0;
 
       setAnimatedNumber(
         Number((easeOut * totalNumber).toFixed(decimalPlaces))
       );
-
 
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(animateNumber);
@@ -56,10 +48,11 @@ const StatisticsCard = ({ statistic }) => {
 
     animationFrameId = requestAnimationFrame(animateNumber);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [totalNumber]);
+  }, [totalNumber, decimalPlaces]);
 
   return (
-    <div className="min-w-[180px] md:min-w-[200px] border-l-[4px] border-red bg-white p-5 text-blue cursor-pointer">
+
+    <div className="h-full w-full border-l-[4px] border-red bg-white p-5 text-blue flex flex-col justify-start">
       <h4 className="flex items-baseline font-kanit font-semibold text-3xl mb-1">
         <span className="tabular-nums">
           {numberFormatter.format(animatedNumber)}
@@ -74,7 +67,7 @@ const StatisticsCard = ({ statistic }) => {
         </span>
       </h4>
 
-      <p className="font-lato text-sm font-medium">
+      <p className="font-lato text-sm font-medium leading-tight">
         {statistic?.text[currentLang]}
       </p>
     </div>

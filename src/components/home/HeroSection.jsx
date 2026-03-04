@@ -5,8 +5,10 @@ import { useGetHomeByDeptIdQuery } from "@/redux/api/homeApi";
 import { useTranslation } from "react-i18next";
 import HomeStatistics from "./HomeStatistics";
 import HeroSlider from "./HeroSlider";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { data } = useGetHomeByDeptIdQuery();
   const homeData = data?.data || {};
@@ -53,12 +55,7 @@ export default function HeroSection() {
             <Button
               className="text-white bg-red"
               icon={<LuArrowRight className="rtl:rotate-180" />}
-              href={homeData?.learnMore || ""}
-              text={t("home.learn_more")}
-              onClick={() => {
-                const element = document.getElementById("learnmore");
-                element?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => navigate(homeData?.learnMore || "/about")}
             >
               {t("home.learn_more")}
             </Button>
@@ -67,7 +64,7 @@ export default function HeroSection() {
       )}
 
       <div
-        className="scrollbar-hide absolute top-[40rem] z-40 mx-auto flex w-full max-w-[1280px] justify-between gap-5 overflow-x-auto px-3 md:px-10"
+        className="absolute top-[38rem] z-40 mx-auto flex w-full max-w-[1790px] px-3 md:px-10"
         id="learnmore"
       >
         <HomeStatistics />

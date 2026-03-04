@@ -1,10 +1,14 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { LuArrowRight } from "react-icons/lu";
 import { Heading, Img } from "../";
 import { useGetAfflicatesQuery } from "@/redux/api/afflicatesApi";
 import { useTranslation } from "react-i18next";
+import { Button } from "../";
+import { useNavigate } from "react-router-dom";
 
 const Afflicates = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const { data } = useGetAfflicatesQuery();
 
@@ -29,6 +33,17 @@ const Afflicates = () => {
           ))}
         </div>
       </Marquee>
+      <div className="flex justify-center">
+        <Button
+          className="text-white bg-red"
+          icon={<LuArrowRight className="rtl:rotate-180" />}
+          href={"/about/subsidiary"}
+          text={t("home.view_more")}
+          onClick={() => navigate("about/subsidiary")}
+        >
+          {t("home.view_more")}
+        </Button>
+      </div>
     </div>
   );
 };
