@@ -52,7 +52,7 @@ const StatisticsCard = ({ statistic }) => {
 
   return (
 
-    <div className="h-full w-full border-l-[4px] border-red bg-white p-5 text-blue flex flex-col justify-start">
+    <div className="h-full w-full border-l-[4px] border-red bg-white px-5 py-2 md:py-5  text-blue flex flex-col justify-start">
       <h4 className="flex items-baseline font-kanit font-semibold text-3xl mb-1">
         <span className="tabular-nums">
           {numberFormatter.format(animatedNumber)}

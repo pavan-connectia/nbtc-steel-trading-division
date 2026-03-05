@@ -52,10 +52,10 @@ export default function Navbar() {
           title: t("nav.about.submenu.executiveManagement"),
           href: "/about/executive-management",
         },
-        {
-          title: t("nav.about.submenu.qualifications"),
-          href: "/about/qualifications",
-        },
+        // {
+        //   title: t("nav.about.submenu.qualifications"),
+        //   href: "/about/qualifications",
+        // },
         {
           title: t("nav.about.submenu.subsidiaries"),
           href: "/about/subsidiary",
@@ -123,119 +123,134 @@ export default function Navbar() {
       className={`z-50 w-full p-3 lg:p-5 ${!isTransparent ? "bg-blue/90" : "absolute top-0 bg-transparent"
         }`}
     >
-      <div
-        className={
-          isSticky && "fixed left-0 top-0 z-50 mx-auto w-full bg-blue/90"
-        }
-      >
+       <div className={`${isSticky ? "fixed left-0 top-0 z-40 w-full bg-blue/90 shadow-lg" : ""}`}>
         <div
-          className={
-            isSticky
-              ? "right-0 z-50 mx-auto hidden w-full max-w-[1280px] gap-5 p-3 transition-transform duration-300 ease-in-out lg:flex lg:py-5"
-              : "mx-auto max-w-[1280px] space-y-5"
-          }
+          className={`mx-auto max-w-[1280px] ${isSticky ? "p-1" : ""}`}
         >
-          <div className="flex items-center justify-between">
-            <a
-              href={import.meta.env.VITE_HOME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="logo"
-              className="shrink-0"
-            >
-              <img
-                src="/logo.png"
-                alt="Logo"
-                className="h-auto w-[180px] object-contain"
-              />
-            </a>
+          {/* Top row with logo and langugage button */}
+          <div className="flex items-center justify-between p-0 md:pb-4">
+            <Link to="/" aria-label="logo" className="shrink-0 z-50">
+              <img src="/logo.png" alt="Logo" className="w-[200px] object-contain" />
+            </Link>
 
-            {!isSticky && (
+           
               <div className="relative hidden items-center justify-between rounded-md bg-transparent px-3 py-1.5 text-textGray lg:flex">
                 <LanguageToggle />
               </div>
-            )}
+           
 
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden"
-            >
-              {<LuMenu size={20} className="text-white" />}
+            <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden z-50">
+              <LuMenu size={20} className="text-white" />
             </button>
           </div>
 
-          <DesktopMenu
-            nav={nav}
-            activeMenu={activeMenu}
-            setActiveMenu={setActiveMenu}
-            isTransparent={isTransparent}
-          />
+          {/* Desktop Navigation - Only show when not sticky */}
+          {!isSticky && (
+            <DesktopMenu
+              nav={nav}
+              activeMenu={activeMenu}
+              setActiveMenu={setActiveMenu}
+            />
+          )}
         </div>
+        
+        {/* Sticky Navigation - Show when sticky */}
+        {isSticky && (
+          <div className="mx-auto max-w-[1280px] p-1">
+            <DesktopMenu
+              nav={nav}
+              activeMenu={activeMenu}
+              setActiveMenu={setActiveMenu}
+            />
+          </div>
+        )}
       </div>
 
-      {/* mobile menu */}
+      {/* MOBILE MENU */}
       <nav
-        className={`fixed top-0 z-50 h-screen overflow-y-auto overflow-x-hidden py-5 duration-700 lg:hidden ${menuOpen ? "right-0" : "-right-full"
-          } w-full max-w-[300px] bg-black sm:max-w-[350px]`}
+        className={`fixed top-0 z-[100] h-screen overflow-y-auto py-5 duration-700 lg:hidden ${menuOpen ? "right-0" : "-right-full"
+          } w-full max-w-[300px] bg-black`}
         ref={sideBarRef}
       >
-        <div className="flex w-full flex-col justify-between gap-5 py-5 text-sm">
-          {nav.map((nav, idx) => (
-            <div key={idx} className="font-kanit group relative">
-              {!nav.submenu ? (
+        <div className="flex flex-col gap-5 py-5 text-sm">
+          {nav.map((navItem, idx) => (
+            <div key={idx} className="font-kanit relative">
+              {!navItem.submenu ? (
                 <NavLink
-                  to={nav?.href}
-                  onClick={() => {
-                    setMenuOpen(false);
-                  }}
-                  className="flex items-center py-2 pl-10 text-sm text-textGray rtl:pr-10"
+                  to={navItem.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center py-2 pl-10 text-textGray"
                 >
-                  {nav?.title}
+                  {navItem.title}
                 </NavLink>
               ) : (
-                <button
-                  onClick={() => nav.submenu && toggleMobileSubmenu(idx)}
-                  className="flex w-full items-center py-2 pl-10 text-sm text-textGray rtl:pr-10"
-                >
-                  {nav?.title}
-                  <LuChevronDown
-                    strokeWidth={2.5}
-                    className={`${activeMenu === idx && "rotate-180"
-                      } ml-1.5 transform transition-transform rtl:mr-1.5`}
-                  />
-                </button>
-              )}
+                <>
+                  <button
+                    onClick={() =>
+                      activeMobileMenu === idx
+                        ? setActiveMobileMenu(null)
+                        : setActiveMobileMenu(idx)
+                    }
+                    className="flex w-full items-center py-2 pl-10 text-textGray"
+                  >
+                    {navItem.title}
+                    <LuChevronDown className={`ml-1.5 transition-transform ${activeMobileMenu === idx ? "rotate-180" : ""}`} />
+                  </button>
 
-              {nav.submenu && activeMobileMenu === idx && (
-                <div className="top-full mt-2 w-[20rem] overflow-hidden rounded-lg text-textGray shadow-sm">
-                  {nav.submenu.map((subnav, subIdx) => (
-                    <NavLink
-                      key={subIdx}
-                      to={subnav?.href}
-                      onClick={() => {
-                        setMenuOpen(false);
-                      }}
-                      className="block text-wrap break-words py-3 pl-12 rtl:pl-0 rtl:pr-12"
-                    >
-                      {subnav?.title}
-                    </NavLink>
-                  ))}
-                </div>
+                  {activeMobileMenu === idx && (
+                    <div className="absolute left-0 top-full z-[110] mt-2 w-full rounded-lg bg-black text-textGray shadow-lg">
+                      {navItem.submenu.map((sub, subIdx) => {
+                        const isCore = navItem.title === t("nav.coreBusiness.title");
+
+                        return isCore ? (
+                          subIdx < 5 ? (
+                            <NavLink
+                              key={subIdx}
+                              to={sub.href}
+                              onClick={() => setMenuOpen(false)}
+                              className="block py-3 pl-12 hover:bg-gray-800"
+                            >
+                              {sub.title}
+                            </NavLink>
+                          ) : (
+                            <a
+                              key={subIdx}
+                              href={sub.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block py-3 pl-12 hover:bg-gray-800"
+                            >
+                              {sub.title}
+                            </a>
+                          )
+                        ) : (
+                          <NavLink
+                            key={subIdx}
+                            to={sub.href}
+                            onClick={() => setMenuOpen(false)}
+                            className="block py-3 pl-12 hover:bg-gray-800"
+                          >
+                            {sub.title}
+                          </NavLink>
+                        );
+                      })}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           ))}
+
           <Link
             to="/contact"
             onClick={() => setMenuOpen(false)}
-            className="tex-sm ml-8 flex w-fit items-center justify-between gap-x-3 rounded-md border border-red px-3 py-1 font-normal text-red rtl:ml-0 rtl:mr-8"
+            className="ml-8 flex w-fit items-center gap-x-3 rounded border border-red px-3 py-1 text-red"
           >
             <span>{t("nav.contact_us")}</span>
-            <span>
-              <LuPhoneCall />
-            </span>
+            <LuPhoneCall />
           </Link>
 
-          <div className="ml-8 mt-3 rtl:mr-8">
+          <div className="ml-8 mt-3">
             <LanguageToggle />
           </div>
         </div>

@@ -55,6 +55,7 @@ export default function HeroSection() {
             <Button
               className="text-white bg-red"
               icon={<LuArrowRight className="rtl:rotate-180" />}
+              text={t("home.learn_more")}
               onClick={() => navigate(homeData?.learnMore || "/about")}
             >
               {t("home.learn_more")}
