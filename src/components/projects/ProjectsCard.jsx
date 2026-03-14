@@ -1,43 +1,48 @@
 import React from "react";
-import { Heading, HyperLink, Img, Paragraph, SetInnerHtml } from "..";
+import { Heading, HyperLink, Img, Paragraph } from "..";
 import { twMerge } from "tailwind-merge";
 import { LuArrowRight } from "react-icons/lu";
 import { useTranslation } from "react-i18next";
 
 const ProjectsCard = ({ projects, containerClass }) => {
   const { t, i18n } = useTranslation();
-  const currentLang = i18n.language === "ar" ? "ar" : "en";
+  const isRTL = i18n.language === "ar";
+  const currentLang = isRTL ? "ar" : "en";
+
   const defaultClass = twMerge(
     "row-span-6 max-h-[20rem] min-h-[20rem] max-w-[25rem] relative overflow-hidden group",
-    containerClass,
+    containerClass
   );
 
   return (
     <div className={defaultClass}>
-      <div className="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-b from-[#0B1228] to-[#0B1228]/0 hover:cursor-pointer group-hover:bg-blue/80"></div>
-      <div className="absolute left-0 top-0 z-20 space-y-3 p-5">
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#0B1228] to-[#0B1228]/0 group-hover:bg-blue/80 transition-all duration-300 cursor-pointer" />
+
+      <div className="absolute inset-0 z-20 p-5">
         <Heading
           className="line-clamp-3 font-normal text-[#F8F9FD] md:text-base lg:text-[1.25rem]"
-          children={projects?.title[currentLang]}
-        />
-        <Paragraph
-          className="text-sm !text-[#F8F9FD]"
-          children={projects?.location[currentLang]}
-        />
-        <hr className="w-[18rem]" />
-        <SetInnerHtml
-          className="line-clamp-4 text-sm text-[#F8F9FD]"
-          text={projects?.description[currentLang]}
-        />
+        >
+          {projects?.title?.[currentLang]}
+        </Heading>
+
+        <Paragraph className="mt-2 text-sm !text-[#F8F9FD]">
+          {projects?.location?.[currentLang]}
+        </Paragraph>
+
+        <hr className="my-3 w-[18rem]" />
+
         <HyperLink
           variant="filled"
-          className="invisible group-hover:visible"
+          className={`absolute bottom-5 ${
+            isRTL ? "left-5" : "right-5"
+          } opacity-0 group-hover:opacity-100 transition-all duration-300`}
           icon={<LuArrowRight className="rtl:rotate-180" />}
           href={`/projects/${projects?._id}`}
         >
           {t("home.view_more")}
         </HyperLink>
       </div>
+
       <Img
         dynamic
         src={projects?.image}

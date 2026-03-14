@@ -25,7 +25,6 @@ const DetailProject = () => {
       <Hero
         dynamic
         src={data?.data?.image}
-        heading={data?.data?.title?.[currentLang]}
       />
 
       <MaxContainer className="max-w-[1200px] space-y-3 px-3 pb-6 pt-10">

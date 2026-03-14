@@ -33,16 +33,16 @@ const EquimentsDetails = ({ data }) => {
             ))}
           </div>
 
-          <Card className="max-h-[27rem] max-w-[34rem] flex-shrink-0 md:h-[27rem] md:w-[34rem]">
+
             <Img
               dynamic
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain mx-auto max-h-[27rem] max-w-[34rem] flex-shrink-0 md:h-[27rem] md:w-[34rem]"
               src={selectedImg || data?.image || ""}
             />
-          </Card>
+         
         </div>
 
-        <div className="space-y-1 xl:w-[43%]">
+        <div className="space-y-1 my-auto xl:w-[43%]">
           <Heading variant="big" className="text-left">
             {data?.name?.[currentLang]}
           </Heading>
