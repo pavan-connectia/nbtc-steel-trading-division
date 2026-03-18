@@ -5,7 +5,7 @@ export const milestonesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL }),
   endpoints: (builder) => ({
     getMilestones: builder.query({
-      query: () => ({ url: `/milestones-department/department/${import.meta.env.VITE_DEPT_ID}`, params: { display: true } }),
+      query: () => ({ url: "/milestones", params: { display: true } }),
     }),
   }),
 });

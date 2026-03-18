@@ -16,6 +16,9 @@ export default function Navbar() {
   const menuRef = useRef(null);
   const sideBarRef = useRef(null);
 
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
   const toggleMobileSubmenu = (idx) =>
     activeMobileMenu === idx
       ? setActiveMobileMenu(null)
@@ -105,8 +108,23 @@ export default function Navbar() {
     // },
   ];
 
-  const handleScroll = () =>
-    window.scrollY > 200 ? setIsSticky(true) : setIsSticky(false);
+   const handleScroll = () => {
+  const currentScrollY = window.scrollY;
+
+  setIsSticky(currentScrollY > 200);
+
+  if (currentScrollY > lastScrollY.current) {
+    setIsVisible(false);
+  } else {
+    setIsVisible(true);
+  }
+
+  if (currentScrollY < 50) {
+    setIsVisible(true);
+  }
+
+  lastScrollY.current = currentScrollY;
+};
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -119,25 +137,31 @@ export default function Navbar() {
     location.pathname === "/" || location.pathname === "/products-service";
 
   return (
-    <header
-      className={`z-50 w-full p-3 lg:p-5 ${!isTransparent ? "bg-blue/90" : "absolute top-0 bg-transparent"
+      <header
+      className={`z-100 w-full p-3 lg:p-5 ${!isTransparent ? "bg-blue/90" : "absolute top-0 bg-transparent"
         }`}
     >
-       <div className={`${isSticky ? "fixed left-0 top-0 z-40 w-full bg-blue/90 shadow-lg" : ""}`}>
+      <div
+        className={`transition-transform duration-300 ${isSticky
+            ? `fixed left-0 top-0 z-40 w-full bg-blue/90 shadow-lg ${isVisible ? "translate-y-0" : "-translate-y-full"
+            }`
+            : ""
+          }`}
+      >
         <div
           className={`mx-auto max-w-[1280px] ${isSticky ? "p-1" : ""}`}
         >
           {/* Top row with logo and langugage button */}
-          <div className="flex items-center justify-between p-0 md:pb-4">
+          <div className="flex items-center justify-between ">
             <Link to="/" aria-label="logo" className="shrink-0 z-50">
               <img src="/logo.png" alt="Logo" className="w-[200px] object-contain" />
             </Link>
 
-           
-              <div className="relative hidden items-center justify-between rounded-md bg-transparent px-3 py-1.5 text-textGray lg:flex">
-                <LanguageToggle />
-              </div>
-           
+
+            <div className="relative hidden items-center justify-between rounded-md bg-transparent px-3 py-1.5 text-textGray lg:flex">
+              <LanguageToggle />
+            </div>
+
 
             <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden z-50">
               <LuMenu size={20} className="text-white" />
@@ -153,7 +177,7 @@ export default function Navbar() {
             />
           )}
         </div>
-        
+
         {/* Sticky Navigation - Show when sticky */}
         {isSticky && (
           <div className="mx-auto max-w-[1280px] p-1">

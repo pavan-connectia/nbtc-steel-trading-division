@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Button,
   ContactForm,
@@ -12,7 +12,7 @@ import {
   QuotationForm,
   SetInnerHtml,
 } from "@/components";
-import { LuArrowRight, LuPhoneCall } from "react-icons/lu";
+import { LuArrowLeft, LuArrowRight, LuPhoneCall } from "react-icons/lu";
 import HowItWorks from "@/components/core-business/HowItWorks";
 import EquipmentCard from "@/components/core-business/EquipmentCard";
 import { useGetCoreBusinessByDeptIdQuery } from "@/redux/api/coreBusinessApi";
@@ -25,14 +25,62 @@ const CoreBusiness = () => {
   const { data } = useGetCoreBusinessByDeptIdQuery();
   const { data: equipDept } = useGetEquipmentsByFeaturedPopularDeptIdQuery();
 
-    const [showModal, setShowModal] = useState(false);
+  const featuredScrollRef = useRef(null);
+  const popularScrollRef = useRef(null);
+
+  const [showModal, setShowModal] = useState(false);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
 
   const currentLang = i18n.language === "ar" ? "ar" : "en";
 
-  const fltrdFeatured = equipDept?.data?.filter((e) => e.featured === true);
+  const fltrdFeatured = equipDept?.data?.filter((e) => e.featured === true) || [];
 
-  const fltrdPopular = equipDept?.data?.filter((e) => e.popular === true);
+  const fltrdPopular = equipDept?.data?.filter((e) => e.popular === true) || [];
+
+  useEffect(() => {
+    if (!featuredScrollRef.current || fltrdFeatured.length === 0) return;
+
+    const container = featuredScrollRef.current;
+    container.scrollLeft = container.scrollWidth / 3;
+  }, [fltrdFeatured]);
+
+  useEffect(() => {
+    if (!popularScrollRef.current || fltrdPopular.length === 0) return;
+
+    const container = popularScrollRef.current;
+    container.scrollLeft = container.scrollWidth / 3;
+  }, [fltrdPopular]);
+
+  const handleFeaturedScroll = () => {
+    const container = featuredScrollRef.current;
+    if (!container) return;
+
+    const totalWidth = container.scrollWidth;
+    const singleSetWidth = totalWidth / 3;
+
+    if (container.scrollLeft <= 0) {
+      container.scrollLeft = singleSetWidth;
+    }
+
+    if (container.scrollLeft >= singleSetWidth * 2) {
+      container.scrollLeft = singleSetWidth;
+    }
+  };
+
+  const handlePopularScroll = () => {
+    const container = popularScrollRef.current;
+    if (!container) return;
+
+    const singleSetWidth = container.scrollWidth / 3;
+
+    if (container.scrollLeft <= singleSetWidth * 0.5) {
+      container.scrollLeft += singleSetWidth;
+    }
+
+    if (container.scrollLeft >= singleSetWidth * 2.5) {
+      container.scrollLeft -= singleSetWidth;
+    }
+  };
 
   return (
     <>
@@ -96,10 +144,16 @@ const CoreBusiness = () => {
             {t("coreBusiness.our_featured_equipments")}
           </Heading>
 
-          <div className="scrollbar-hide flex justify-start gap-5 overflow-x-auto px-5 py-10">
-            {fltrdFeatured?.map((d) => (
-              <EquipmentCard equipment={d} key={d?._id} />
-            ))}
+          <div className="relative py-10">
+            <div
+              ref={featuredScrollRef}
+              onScroll={handleFeaturedScroll}
+              className="scrollbar-hide flex gap-5 overflow-x-auto px-10"
+            >
+              {[...fltrdFeatured, ...fltrdFeatured, ...fltrdFeatured].map((d, index) => (
+                <EquipmentCard equipment={d} key={`${d?._id}-${index}`} />
+              ))}
+            </div>
           </div>
 
           <HyperLink
@@ -121,10 +175,15 @@ const CoreBusiness = () => {
               className="font-normal text-white md:text-lg lg:text-xl"
             />
             <Button
-              variant="filled"
-              className="bg-white text-red"
+              onClick={() => {
+                setSelectedEquipment({
+                  title: "General Enquiry",
+                  department: import.meta.env.VITE_DEPT_ID,
+                });
+                setShowModal(true);
+              }}
               text={t("home.get_a_quote")}
-              onClick={() => setShowModal(true)}
+              className="font-kanit bg-red text-sm font-light text-white"
             />
           </div>
           <Img
@@ -150,7 +209,6 @@ const CoreBusiness = () => {
         department={data?.data[0]?._id}
         onClose={() => setShowModal(false)}
         isOpen={showModal}
-        title="General Enquiry"
       />
 
       <HowItWorks image={data?.data[0]?.howItWorksBanner} />
@@ -169,10 +227,16 @@ const CoreBusiness = () => {
             {t("coreBusiness.most_popular_equipments")}
           </Heading>
 
-          <div className="scrollbar-hide flex justify-start gap-5 overflow-x-auto px-5 py-10">
-            {fltrdPopular?.map((d) => (
-              <EquipmentCard equipment={d} key={d?._id} />
-            ))}
+          <div className="relative py-10">
+            <div
+              ref={popularScrollRef}
+              onScroll={handlePopularScroll}
+              className="scrollbar-hide flex gap-5 overflow-x-auto px-10"
+            >
+              {[...fltrdPopular, ...fltrdPopular, ...fltrdPopular].map((d, index) => (
+                <EquipmentCard equipment={d} key={`${d?._id}-${index}`} />
+              ))}
+            </div>
           </div>
 
           <HyperLink

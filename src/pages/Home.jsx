@@ -52,7 +52,7 @@ const Home = () => {
       <LazyLoadComponent Component={HomeBrands} /> */}
       <LazyLoadComponent Component={Client} />
 
-      <LazyLoadComponent Component={OurMilestones} />
+      {/* <LazyLoadComponent Component={OurMilestones} /> */}
       <LazyLoadComponent Component={Awards} />
       <LazyLoadComponent Component={Afflicates} />
       <LazyLoadComponent Component={EmployeeLinks} />
